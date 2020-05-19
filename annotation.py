@@ -4,6 +4,7 @@ import glob
 import math
 import time
 import seaborn as sns
+import matplotlib.pyplot as plt
 
 def relative_box_size(path):
     root = ET.parse(path).getroot()
