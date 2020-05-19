@@ -3,7 +3,6 @@ from xml.etree import ElementTree as ET
 import glob
 import math
 import time
-import seaborn as sns
 import matplotlib.pyplot as plt
 
 def relative_box_size(path):
@@ -27,11 +26,9 @@ for path in path_list:
     relative_list.append(relative_box_size(path))
 print(len(path_list), len(relative_list))
 
-sns.distplot(relative_list, color="dodgerblue", **kwargs)
-plt.xlabel('Relative box size')
-plt.ylabel('Fequency')
-plt.savefig('Fequency_result.png')
-plt.legend();
+plt.hist(relative_list, bins = 100)
+plt.gca().set(title='Frequency Histogram', ylabel='Frequency', xlabel = 'Relative bbox size');
+plt.savefig('F:/viettel/relative_box_size_graph/Fequency_result.png')
 
 print("--- %.2f seconds ---" % (time.time() - start_time))
 print('--- COMPLETE ---')
