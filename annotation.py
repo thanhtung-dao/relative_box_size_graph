@@ -27,11 +27,16 @@ def relative_box_size(path):
 
 
 def main():
-    path_list = glob.glob("Annotations_new/*.xml")
+    path_iterator = iter(glob.glob("Annotations_new/*.xml"))
     relative_list = []
-    for path in path_list:
-        relative_list.extend(relative_box_size(path))
-    print("Number of images: %s" % len(path_list))
+    number_of_images = 0
+    while True:
+        try:
+            relative_list.extend(relative_box_size(next(path_iterator)))
+            number_of_images += 1
+        except StopIteration:
+            break
+    print("Number of images: %s" % number_of_images)
     print("Number of ships: %s" % len(relative_list))
 
     plt.hist(relative_list, bins=100)
