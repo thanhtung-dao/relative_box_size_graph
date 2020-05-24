@@ -39,13 +39,14 @@ def main():
     print("Number of images: %s" % number_of_images)
     print("Number of ships: %s" % len(relative_list))
 
+    plt.figure(dpi=300)
     plt.hist(relative_list, bins=100)
     plt.gca().set(
         title="Frequency Histogram",
         ylabel="Frequency",
         xlabel="Relative bbox size",
     )
-    plt.savefig("F:/viettel/relative_box_size_graph/Fequency_result.png")
+    plt.savefig("Frequency_result.png")
 
 
 if __name__ == "__main__":
